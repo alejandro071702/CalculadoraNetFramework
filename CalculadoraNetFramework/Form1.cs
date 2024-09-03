@@ -16,5 +16,18 @@ namespace CalculadoraNetFramework
         {
             InitializeComponent();
         }
+
+        private void Digit_Click(object sender, EventArgs e)
+        {
+            if (sender.GetType() != typeof(Button))
+            {
+                Console.Write("Unexpected click event");
+                return;
+            }
+
+            Button b = (Button)sender;
+
+            Display.Text += b.Text;
+        }
     }
 }
