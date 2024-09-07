@@ -234,16 +234,6 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-
-            foreach (object o in this.Controls)
-            {
-                if (o is System.Windows.Forms.Button)
-                {
-                    System.Windows.Forms.Button b = (System.Windows.Forms.Button)o;
-                    b.Click += new System.EventHandler(Digit_Click);
-                }
-            }
-
             this.Controls.Add(this.buttonEqual);
 
             this.Name = "Form1";

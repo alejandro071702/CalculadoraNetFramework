@@ -18,6 +18,20 @@ namespace CalculadoraNetFramework
         public Form1()
         {
             InitializeComponent();
+            buttonAddEvent();
+        }
+
+        private void buttonAddEvent()
+        {
+            foreach (object o in this.Controls)
+            {
+                if (o is System.Windows.Forms.Button)
+                {
+                    System.Windows.Forms.Button b = (System.Windows.Forms.Button)o;
+                    if (b.Text == "=") continue;
+                    b.Click += new System.EventHandler(Digit_Click);
+                }
+            }
         }
 
         bool errorMsg = false;
