@@ -79,5 +79,40 @@ namespace CalculadoraNetFramework
                 errorMsg = true;
             }
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonDot_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonDivision_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonPlus_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonMinus_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonProduct_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button0_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
