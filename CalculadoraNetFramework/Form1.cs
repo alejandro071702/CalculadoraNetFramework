@@ -28,7 +28,7 @@ namespace CalculadoraNetFramework
                 if (o is System.Windows.Forms.Button)
                 {
                     System.Windows.Forms.Button b = (System.Windows.Forms.Button)o;
-                    if (b.Text == "=") continue;
+                    if (b.Text == "=" || b.Text == "CE") continue;
                     b.Click += new System.EventHandler(Digit_Click);
                 }
             }
@@ -113,6 +113,18 @@ namespace CalculadoraNetFramework
         private void button0_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Display_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CE_Click(object sender, EventArgs e)
+        {
+            // Limpiar el contenido del TextBox
+            Display.Text = "";
+            
         }
     }
 }

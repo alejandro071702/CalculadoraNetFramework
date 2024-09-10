@@ -45,6 +45,7 @@
             this.buttonMinus = new System.Windows.Forms.Button();
             this.buttonProduct = new System.Windows.Forms.Button();
             this.buttonDivision = new System.Windows.Forms.Button();
+            this.CE = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button0
@@ -150,12 +151,15 @@
             // Display
             // 
             this.Display.CausesValidation = false;
-            this.Display.Location = new System.Drawing.Point(101, 129);
+            this.Display.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Display.Location = new System.Drawing.Point(101, 86);
+            this.Display.Multiline = true;
             this.Display.Name = "Display";
             this.Display.ReadOnly = true;
             this.Display.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Display.Size = new System.Drawing.Size(231, 22);
+            this.Display.Size = new System.Drawing.Size(277, 59);
             this.Display.TabIndex = 9;
+            this.Display.TextChanged += new System.EventHandler(this.Display_TextChanged);
             // 
             // buttonEqual
             // 
@@ -217,11 +221,22 @@
             this.buttonDivision.UseVisualStyleBackColor = true;
             this.buttonDivision.Click += new System.EventHandler(this.buttonDivision_Click);
             // 
+            // CE
+            // 
+            this.CE.Location = new System.Drawing.Point(99, 142);
+            this.CE.Name = "CE";
+            this.CE.Size = new System.Drawing.Size(279, 30);
+            this.CE.TabIndex = 17;
+            this.CE.Text = "CE";
+            this.CE.UseVisualStyleBackColor = true;
+            this.CE.Click += new System.EventHandler(this.CE_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.CE);
             this.Controls.Add(this.buttonDivision);
             this.Controls.Add(this.buttonProduct);
             this.Controls.Add(this.buttonMinus);
@@ -266,6 +281,7 @@
         private System.Windows.Forms.Button buttonMinus;
         private System.Windows.Forms.Button buttonProduct;
         private System.Windows.Forms.Button buttonDivision;
+        private System.Windows.Forms.Button CE;
     }
 }
 
