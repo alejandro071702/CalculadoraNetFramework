@@ -46,6 +46,7 @@
             this.buttonProduct = new System.Windows.Forms.Button();
             this.buttonDivision = new System.Windows.Forms.Button();
             this.CE = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // button0
@@ -223,19 +224,28 @@
             // 
             // CE
             // 
-            this.CE.Location = new System.Drawing.Point(99, 142);
+            this.CE.Location = new System.Drawing.Point(101, 144);
             this.CE.Name = "CE";
-            this.CE.Size = new System.Drawing.Size(279, 30);
+            this.CE.Size = new System.Drawing.Size(277, 30);
             this.CE.TabIndex = 17;
             this.CE.Text = "CE";
             this.CE.UseVisualStyleBackColor = true;
             this.CE.Click += new System.EventHandler(this.CE_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(403, 86);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(317, 231);
+            this.textBox1.TabIndex = 18;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.CE);
             this.Controls.Add(this.buttonDivision);
             this.Controls.Add(this.buttonProduct);
@@ -282,6 +292,7 @@
         private System.Windows.Forms.Button buttonProduct;
         private System.Windows.Forms.Button buttonDivision;
         private System.Windows.Forms.Button CE;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 

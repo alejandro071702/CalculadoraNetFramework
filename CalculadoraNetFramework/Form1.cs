@@ -64,7 +64,11 @@ namespace CalculadoraNetFramework
                 {
                     // Utiliza DataTable para evaluar la expresión
                     var result = new DataTable().Compute(Display.Text, null);
+                    Display.Text = textBox1.Text;
+
                     Display.Text = $"{result}";
+
+                    textBox1.Text= result.ToString();
                 }
                 catch (Exception ex)
                 {
@@ -78,6 +82,7 @@ namespace CalculadoraNetFramework
                 Display.Text = "SYNTAX ERROR";
                 errorMsg = true;
             }
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
