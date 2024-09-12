@@ -30,6 +30,8 @@ namespace CalculadoraNetFramework
                     System.Windows.Forms.Button b = (System.Windows.Forms.Button)o;
                     if (b.Text == "=" || b.Text == "CE") continue;
                     b.Click += new System.EventHandler(Digit_Click);
+                    
+
                 }
             }
         }
@@ -66,9 +68,11 @@ namespace CalculadoraNetFramework
                     var result = new DataTable().Compute(Display.Text, null);
                     Display.Text = textBox1.Text;
 
+                    string calculo = Display.Text;
+
                     Display.Text = $"{result}";
 
-                    textBox1.Text= result.ToString();
+                    textBox1.Text=calculo.ToString() + result.ToString() +  "\r\n";
                 }
                 catch (Exception ex)
                 {
@@ -129,6 +133,7 @@ namespace CalculadoraNetFramework
         {
             // Limpiar el contenido del TextBox
             Display.Text = "";
+            textBox1.Text = "";
             
         }
     }
