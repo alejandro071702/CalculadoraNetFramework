@@ -5,11 +5,14 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Diagnostics;
+using System.IO;
 
 namespace CalculadoraNetFramework
 {
@@ -28,13 +31,16 @@ namespace CalculadoraNetFramework
                 if (o is System.Windows.Forms.Button)
                 {
                     System.Windows.Forms.Button b = (System.Windows.Forms.Button)o;
-                    if (b.Text == "=" || b.Text == "CE") continue;
-                    b.Click += new System.EventHandler(Digit_Click);
-                    
 
+                    // Excluir botones que no deben tener el evento Digit_Click
+                    if (b.Text == "=" || b.Text == "CE" || b.Text == "Cargar") continue;
+
+                    // Asignar evento solo a los botones que representan dígitos u operadores
+                    b.Click += new System.EventHandler(Digit_Click);
                 }
             }
         }
+
 
         bool errorMsg = false;
         private void Digit_Click(object sender, EventArgs e)
@@ -138,5 +144,66 @@ namespace CalculadoraNetFramework
             textBox1.Text = "";
             
         }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sd = new SaveFileDialog();
+            sd.AddExtension = true;
+            sd.Filter = "Text files|*.txt";
+
+            if (sd.ShowDialog() == DialogResult.OK)
+            {
+                // Guarda el contenido del textBox1 en un archivo de texto
+                System.IO.File.WriteAllText(sd.FileName, textBox1.Text);
+
+                // Mensaje de confirmación
+                MessageBox.Show("Historial guardado correctamente.");
+            }
+        }
+
+
+
+        private void button11_Click(object sender, EventArgs e) // Cargar archivo
+        {
+            Display.Text = "";
+            OpenFileDialog sd = new OpenFileDialog();
+            sd.AddExtension = true;
+            sd.Filter = "Text files|*.txt";
+
+            if (sd.ShowDialog() == DialogResult.OK)
+            {
+                // Leer el contenido del archivo en el TextBox
+                textBox1.Text = File.ReadAllText(sd.FileName);
+
+                double sum = 0; // Variable para la suma total
+
+                // Iterar sobre cada línea del TextBox
+                for (int i = 0; i < textBox1.Lines.Length; i++)
+                {
+                    // Buscar el signo "=" en cada línea
+                    int index = textBox1.Lines[i].IndexOf('=');
+                    if (index >= 0)
+                    {
+                        // Obtener la parte de la línea después del signo "="
+                        string line = textBox1.Lines[i].Substring(index + 1).Trim();
+
+                        try
+                        {
+                            // Sumar los resultados de las operaciones
+                            sum += double.Parse(line);
+                        }
+                        catch (FormatException)
+                        {
+                            // Manejar posibles errores de formato
+                            MessageBox.Show("Formato de número no válido en el historial.");
+                        }
+                    }
+                }
+
+                // Mostrar la suma en el Display
+                Display.Text = "Suma = " + sum.ToString();
+            }
+        }
+
     }
 }
