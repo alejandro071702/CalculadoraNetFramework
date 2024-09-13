@@ -57,22 +57,23 @@ namespace CalculadoraNetFramework
         }
 
         const string pattern = @"^\s*(-?\d+(\.\d+)?)(\s*([+\-*/])\s*(-?\d+(\.\d+)?))?\s*$";
-        private void Evaluate_Expression (object sendder, EventArgs e)
+        private void Evaluate_Expression(object sender, EventArgs e)
         {
-
             if (Regex.IsMatch(Display.Text, pattern))
             {
                 try
                 {
                     // Utiliza DataTable para evaluar la expresión
                     var result = new DataTable().Compute(Display.Text, null);
-                    Display.Text = textBox1.Text;
 
-                    string calculo = Display.Text;
+                    // Guarda la operación actual en una variable
+                    string operacion = Display.Text;
 
+                    // Actualiza el Display con el resultado
                     Display.Text = $"{result}";
 
-                    textBox1.Text=calculo.ToString() + result.ToString() +  "\r\n";
+                    // Pasa tanto la operación como el resultado al textBox1
+                    textBox1.AppendText(operacion + " = " + result.ToString() + "\r\n");
                 }
                 catch (Exception ex)
                 {
@@ -80,14 +81,15 @@ namespace CalculadoraNetFramework
                     Display.Text = "MATH ERROR";
                     errorMsg = true;
                 }
-            } else
+            }
+            else
             {
-                //MessageBox.Show("Invalid Input\n");
+                // Si la expresión no es válida, muestra un mensaje de error
                 Display.Text = "SYNTAX ERROR";
                 errorMsg = true;
             }
-            
         }
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
